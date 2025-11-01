@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Favorites from './pages/Favorites';
 import NavBar from './components/NavBar';
 import { MovieProvider } from './contexts/MovieContext';
+import WatchLater from './pages/WatchLater';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/watchLater" element={<WatchLater />} />
         </Routes>
       </main>
     </MovieProvider>

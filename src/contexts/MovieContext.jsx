@@ -1,42 +1,70 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-const MovieContext = createContext()
+const MovieContext = createContext();
 
-export const useMovieContext = () => useContext(MovieContext)
+export const useMovieContext = () => useContext(MovieContext);
 
-export const MovieProvider = ({children}) => {
-    const[favorites, setFavorites] = useState([])
+export const MovieProvider = ({ children }) => {
+  const [favorites, setFavorites] = useState([]);
+  const [watchLater, setWatchLater] = useState([]);
 
-    useEffect (() =>{
-        const storedFavs = localStorage.getItem("favorites")
+  // Load from localStorage
+  useEffect(() => {
+    const storedFavs = localStorage.getItem("favorites");
+    const storedLater = localStorage.getItem("watchLater");
 
-        if (storedFavs) setFavorites(JSON.parse(storedFavs))
-    }, [])
+    if (storedFavs) setFavorites(JSON.parse(storedFavs));
+    if (storedLater) setWatchLater(JSON.parse(storedLater));
+  }, []);
 
-    useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-    }, [favorites])
+  // Sync favorites
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
-    const addToFavorites = (movie) => {
-        setFavorites(prev => [...prev, movie])
-    }
+  // Sync watchLater
+  useEffect(() => {
+    localStorage.setItem("watchLater", JSON.stringify(watchLater));
+  }, [watchLater]);
 
-    const removeFavorites = (movieId) => {
-        setFavorites(prev => prev.filter(movie => movie.id !== movieId))
-    }
+  const addToFavorites = (movie) => {
+    setFavorites((prev) =>
+      prev.some((m) => Number(m.id) === Number(movie.id)) ? prev : [...prev, movie]
+    );
+  };
 
-    const isFavorite = (movieId) => {
-        return favorites.some(movie => movie.id === movieId)
-    }
+  const addToWatchLater = (movie) => {
+    setWatchLater((prev) =>
+      prev.some((m) => Number(m.id) === Number(movie.id)) ? prev : [...prev, movie]
+    );
+  };
 
-    const value = {
-        favorites,
-        addToFavorites,
-        removeFavorites,
-        isFavorite
-    }
+  const removeFavorites = (movieId) => {
+    setFavorites((prev) => prev.filter((m) => Number(m.id) !== Number(movieId)));
+  };
 
-    return <MovieContext.Provider value={value}>
-        {children}
-    </MovieContext.Provider>
-}
+  const removeWatchLater = (movieId) => {
+    setWatchLater((prev) => prev.filter((m) => Number(m.id) !== Number(movieId)));
+  };
+
+  const isFavorite = (movieId) => {
+    return favorites.some((m) => Number(m.id) === Number(movieId));
+  };
+
+  const isWatchLater = (movieId) => {
+    return watchLater.some((m) => Number(m.id) === Number(movieId));
+  };
+
+  const value = {
+    favorites,
+    addToFavorites,
+    removeFavorites,
+    isFavorite,
+    watchLater,
+    addToWatchLater,
+    removeWatchLater,
+    isWatchLater
+  };
+
+  return <MovieContext.Provider value={value}>{children}</MovieContext.Provider>;
+};

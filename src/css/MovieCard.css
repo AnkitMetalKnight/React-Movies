@@ -64,13 +64,32 @@
   justify-content: center;
   transition: background-color 0.2s;
 }
+.watchLater-btn {
+  position :absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
 
-.favorite-btn:hover {
+.favorite-btn:hover, .watchLater-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .favorite-btn.active {
   color: #ff4757;
+}
+.watchLater-btn.active {
+  color: #eac700; /* golden yellow when active */
 }
 
 .rating-select {
@@ -117,6 +136,13 @@
   }
 
   .favorite-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  
+  .watchLater-btn {
     width: 32px;
     height: 32px;
     font-size: 1.2rem;
