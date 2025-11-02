@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #000000;
+background-color: #34323235;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -8,7 +8,7 @@
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -49,7 +49,7 @@
 
 ./* === Navbar Base === */
 .navbar {
-  background-color: #000;
+  background-color: #b93333;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -115,7 +115,7 @@
 }
 
 .dropbtn:hover {
-  color: #e50914;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
