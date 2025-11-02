@@ -8,43 +8,51 @@ export const SeriesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
   const [watchLater, setWatchLater] = useState([]);
 
-  // Load from localStorage
+  // ✅ Load from localStorage
   useEffect(() => {
-    const storedFavs = localStorage.getItem("favorites");
-    const storedLater = localStorage.getItem("watchLater");
+    const storedFavs = localStorage.getItem("seriesFavorites");
+    const storedLater = localStorage.getItem("seriesWatchLater");
 
     if (storedFavs) setFavorites(JSON.parse(storedFavs));
     if (storedLater) setWatchLater(JSON.parse(storedLater));
   }, []);
 
-  // Sync favorites
+  // ✅ Sync favorites
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("seriesFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  // Sync watchLater
+  // ✅ Sync watch later
   useEffect(() => {
-    localStorage.setItem("watchLater", JSON.stringify(watchLater));
+    localStorage.setItem("seriesWatchLater", JSON.stringify(watchLater));
   }, [watchLater]);
 
   const addToFavorites = (series) => {
     setFavorites((prev) =>
-      prev.some((m) => Number(m.id) === Number(series.id)) ? prev : [...prev, series]
+      prev.some((m) => Number(m.id) === Number(series.id))
+        ? prev
+        : [...prev, series]
     );
   };
 
   const addToWatchLater = (series) => {
     setWatchLater((prev) =>
-      prev.some((m) => Number(m.id) === Number(series.id)) ? prev : [...prev, series]
+      prev.some((m) => Number(m.id) === Number(series.id))
+        ? prev
+        : [...prev, series]
     );
   };
 
   const removeFavorites = (seriesId) => {
-    setFavorites((prev) => prev.filter((m) => Number(m.id) !== Number(seriesId)));
+    setFavorites((prev) =>
+      prev.filter((m) => Number(m.id) !== Number(seriesId))
+    );
   };
 
   const removeWatchLater = (seriesId) => {
-    setWatchLater((prev) => prev.filter((m) => Number(m.id) !== Number(seriesId)));
+    setWatchLater((prev) =>
+      prev.filter((m) => Number(m.id) !== Number(seriesId))
+    );
   };
 
   const isFavorite = (seriesId) => {
@@ -63,8 +71,10 @@ export const SeriesProvider = ({ children }) => {
     watchLater,
     addToWatchLater,
     removeWatchLater,
-    isWatchLater
+    isWatchLater,
   };
 
-  return <SeriesContext.Provider value={value}>{children}</SeriesContext.Provider>;
+  return (
+    <SeriesContext.Provider value={value}>{children}</SeriesContext.Provider>
+  );
 };

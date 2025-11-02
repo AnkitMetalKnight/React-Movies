@@ -8,43 +8,51 @@ export const MovieProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
   const [watchLater, setWatchLater] = useState([]);
 
-  // Load from localStorage
+  // ✅ Load from localStorage
   useEffect(() => {
-    const storedFavs = localStorage.getItem("favorites");
-    const storedLater = localStorage.getItem("watchLater");
+    const storedFavs = localStorage.getItem("movieFavorites");
+    const storedLater = localStorage.getItem("movieWatchLater");
 
     if (storedFavs) setFavorites(JSON.parse(storedFavs));
     if (storedLater) setWatchLater(JSON.parse(storedLater));
   }, []);
 
-  // Sync favorites
+  // ✅ Sync favorites
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("movieFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  // Sync watchLater
+  // ✅ Sync watch later
   useEffect(() => {
-    localStorage.setItem("watchLater", JSON.stringify(watchLater));
+    localStorage.setItem("movieWatchLater", JSON.stringify(watchLater));
   }, [watchLater]);
 
   const addToFavorites = (movie) => {
     setFavorites((prev) =>
-      prev.some((m) => Number(m.id) === Number(movie.id)) ? prev : [...prev, movie]
+      prev.some((m) => Number(m.id) === Number(movie.id))
+        ? prev
+        : [...prev, movie]
     );
   };
 
   const addToWatchLater = (movie) => {
     setWatchLater((prev) =>
-      prev.some((m) => Number(m.id) === Number(movie.id)) ? prev : [...prev, movie]
+      prev.some((m) => Number(m.id) === Number(movie.id))
+        ? prev
+        : [...prev, movie]
     );
   };
 
   const removeFavorites = (movieId) => {
-    setFavorites((prev) => prev.filter((m) => Number(m.id) !== Number(movieId)));
+    setFavorites((prev) =>
+      prev.filter((m) => Number(m.id) !== Number(movieId))
+    );
   };
 
   const removeWatchLater = (movieId) => {
-    setWatchLater((prev) => prev.filter((m) => Number(m.id) !== Number(movieId)));
+    setWatchLater((prev) =>
+      prev.filter((m) => Number(m.id) !== Number(movieId))
+    );
   };
 
   const isFavorite = (movieId) => {
@@ -63,8 +71,10 @@ export const MovieProvider = ({ children }) => {
     watchLater,
     addToWatchLater,
     removeWatchLater,
-    isWatchLater
+    isWatchLater,
   };
 
-  return <MovieContext.Provider value={value}>{children}</MovieContext.Provider>;
+  return (
+    <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
+  );
 };
