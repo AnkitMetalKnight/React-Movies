@@ -1,0 +1,20 @@
+.main-content {
+  flex: 1;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* adds breathing space between children */
+
+  background: rgba(20, 20, 20, 0.6); /* subtle contrast layer */
+  backdrop-filter: blur(6px); /* adds glassy smoothness */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* subtle depth */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-content:hover {
+  background: rgba(25, 25, 25, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}

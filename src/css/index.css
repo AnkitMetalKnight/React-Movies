@@ -1,0 +1,104 @@
+:root {
+  font-family: "Inter", "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.95);
+  background: radial-gradient(circle at 30% 20%, #3a3a3a, #1f1f1f 80%);
+  background-attachment: fixed;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(160deg, #3a3a3a 0%, #222 60%, #181818 100%);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.8));
+}
+
+a {
+  font-weight: 500;
+  color: #ff4040;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+a:hover {
+  color: #ff6363;
+  text-shadow: 0 0 8px rgba(255, 99, 99, 0.5);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 120, 120, 0.3);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(145deg, #444, #2a2a2a);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+button:hover {
+  border-color: #ff4040;
+  background: linear-gradient(145deg, #ff4040, #c51616);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 64, 64, 0.3);
+}
+button:focus,
+button:focus-visible {
+  outline: 2px solid #ff4040;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #212121;
+    background-color: #fafafa;
+  }
+  a {
+    color: #007bff;
+  }
+  a:hover {
+    color: #0056d2;
+  }
+  button {
+    background-color: #f5f5f5;
+    color: #000;
+  }
+}

@@ -1,0 +1,97 @@
+.movies {
+  padding: 2rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* 🎬 Search Section */
+.search-form {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(40, 40, 40, 0.95);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  background-color: #1b1b1b;
+}
+
+.search-button {
+  padding: 0.85rem 1.8rem;
+  background: linear-gradient(145deg, #e50914, #b20710);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.search-button:hover {
+  background: linear-gradient(145deg, #f40612, #d60c10);
+  box-shadow: 0 6px 18px rgba(229, 9, 20, 0.45);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 639px) {
+  .movies {
+    padding: 1.2rem 0;
+  }
+
+  .search-form {
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+}
+
+/* 🎞️ Movie Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.8rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.movies-grid:hover {
+  transform: scale(1.01);
+}
+
+/* ✨ Smooth entry animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
