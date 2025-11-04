@@ -9,12 +9,14 @@ import { MovieProvider } from "./contexts/MovieContext";
 import { SeriesProvider } from "./contexts/SeriesContext";
 import WatchLater from "./pages/WatchLater";
 import WatchLaterSeries from "./pages/WatchLaterSeries";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
   return (
     <MovieProvider>
       <SeriesProvider>
         <NavBar />
+          <OnlineUsers />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Movies />} />

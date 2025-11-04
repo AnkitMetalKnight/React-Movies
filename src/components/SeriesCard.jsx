@@ -41,8 +41,8 @@ function SeriesCard({series}) {
           </div>
         </div>
         <div className="movie-info">
-          <h3>{series.title}</h3>
-          <p>{series.release_date?.split("-")[0]}</p>
+          <h3>{series.name}</h3>
+          <p>{series.first_air_date?.split("-")[0]}</p>
         </div>
       </div>
     );
