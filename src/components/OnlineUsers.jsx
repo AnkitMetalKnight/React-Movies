@@ -6,9 +6,9 @@ function OnlineUsers() {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:4000", {
-      transports: ["websocket"],
-    });
+  socketRef.current = io("https://react-movies-1-sv06.onrender.com", {
+  transports: ["websocket"],
+});
 
     socketRef.current.on("onlineUsers", (num) => setCount(num));
 
